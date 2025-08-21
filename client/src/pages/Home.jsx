@@ -1,7 +1,14 @@
 import React from "react";
+import Header from "../components/Header";
+import Steps from "../components/Steps";
 
 const Home = () => {
-  return <div></div>;
+  return (
+    <div>
+      <Header />
+      <Steps></Steps>
+    </div>
+  );
 };
 
 export default Home;
