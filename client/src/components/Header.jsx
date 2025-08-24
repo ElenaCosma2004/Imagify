@@ -1,26 +1,40 @@
 import React from "react";
 import { assets } from "../assets/assets";
-
+import { motion } from "motion/react";
 const Header = () => {
   return (
-    <div className="flex flex-col justify-center items-center text-center my-20">
-      <div className="text-stone-500 inline-flex text-center gap-2 bg-white px-6 py-1 rounded-full border border-neutral-500">
+    <motion.div
+      className="flex flex-col justify-center items-center text-center my-20"
+      initial={{ opacity: 0.2, y: 100 }}
+      transition={{ duration: 1 }}
+      whileInView={{ opacity: 1, y: 0 }}
+      viewport={{ once: true }}
+    >
+      <motion.div
+        className="text-stone-500 inline-flex text-center gap-2 bg-white px-6 py-1 rounded-full border border-neutral-500"
+        initial={{ opacity: 0, y: -20 }}
+        animate={{ opacity: 1, y: 0 }}
+        transition={{ delay: 0.5, duration: 1 }}
+      >
         <p>Welcome to Imagify - best text to image generator!</p>
         <img src={assets.star_icon} alt="" />
-      </div>
+      </motion.div>
 
-      <h1
+      <motion.h1
         className="text-4xl max-w-[300px]
        sm: text-7xl sm:max-w-[590px] max-auto mt-10 text-center"
+        initial={{ opacity: 0 }}
+        animate={{ opacity: 1 }}
+        transition={{ delay: 0.3, duration: 2 }}
       >
         Turn text to <span className="text-pink-600"> image</span>, in seconds.
-      </h1>
+      </motion.h1>
 
-      <p className="text-center max-w-xl mx-auto mt-5">
+      <motion.p className="text-center max-w-xl mx-auto mt-5">
         {" "}
         Unleash your creativity with AI. Turn your imagination into visual art
         in seconds. Just type, and watch the magic happen.{" "}
-      </p>
+      </motion.p>
       <button className="sm:text-lg text-pink-600 bg-black w-auto mt-8 px-12 py-2.5 flex items-center gap-2 rounded-full">
         {" "}
         Generate Images
@@ -42,7 +56,7 @@ const Header = () => {
       </div>
 
       <p className="mt-2 text-neutral-600"> Generated images from Imagify</p>
-    </div>
+    </motion.div>
   );
 };
 

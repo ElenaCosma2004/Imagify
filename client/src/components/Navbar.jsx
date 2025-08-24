@@ -2,8 +2,9 @@ import React, { useContext } from "react";
 import { assets } from "../assets/assets";
 import { Link, useNavigate } from "react-router-dom";
 import { AppContext } from "../context/AppContext.jsx";
+import { motion } from "motion/react";
 const Navbar = () => {
-  const { user } = useContext(AppContext); // Accessing user from AppContext
+  const { user, setShowLogin } = useContext(AppContext); // Accessing user from AppContext
 
   //const [user, setUser] = useState(null); //if true-> the user is logged in
   const navigate = useNavigate();
@@ -19,7 +20,7 @@ const Navbar = () => {
       {user ? (
         <div className="flex items-center gap-2 sm:gap-3">
           <button
-            onCLick={() => navigate("/buy")}
+            onClick={() => navigate("/buy")}
             className="flex items-center gap-2 bg-blue-100 px-4 sm:px-6 py-1.5 sm:py-3 rounded-full hover:scale-105 transition-all duration-700"
           >
             <img className="w-5" src={assets.credit_star} alt="" />
@@ -36,7 +37,7 @@ const Navbar = () => {
             />
             <div className="absolute hidden group-hover:block top-0 right-0 z-10 text-black rounded pt-12">
               <ul className="list-none m-0 p-2 bg-white rounded-md border text-sm">
-                <li classNAme="py-1 px-2 cursor-pointer pr-10">Logout</li>
+                <li className="py-1 px-2 cursor-pointer pr-10">Logout</li>
               </ul>
             </div>
           </div>
@@ -46,7 +47,10 @@ const Navbar = () => {
           <p onClick={() => navigate("/buy")} className="cursor-pointer">
             Pricing
           </p>
-          <button className="px-4 py-2 text-sm rounded-full bg-black text-white">
+          <button
+            onClick={() => setShowLogin(true)}
+            className="px-4 py-2 text-sm rounded-full bg-black text-white"
+          >
             Login
           </button>
         </div>
